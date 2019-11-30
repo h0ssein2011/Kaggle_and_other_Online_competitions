@@ -1,2 +1,2 @@
 # kaggle
-This is my shoots on kaggle competitions
+This is the place I put my solutions to online competition platforms like kaggle /AnalyticVidhaya , ... 
