@@ -10,7 +10,6 @@ import warnings
 import seaborn as sns
 
 warnings.filterwarnings("ignore")
-
 train = pd.read_csv('Train_SU63ISt.csv')
 test = pd.read_csv('Test_0qrQsBZ.csv')
 train_copy = train.copy()
