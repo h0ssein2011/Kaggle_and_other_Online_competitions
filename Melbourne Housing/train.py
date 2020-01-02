@@ -64,7 +64,36 @@ Imputed_X_valid.columns = X_valid.columns
 MAE_imputation=score_dataset(Imputed_X_train , Imputed_X_valid ,y_train , y_valid )
 
 print('MAE for imputation approach is: {}'.format(MAE_imputation))
-
 print('Imputation has better performance')
+
+
+#approach 3: extention of imputation
+X_train_plus = X_train.copy()
+X_valid_plus = X_valid.copy()
+
+for col in cols_with_missing_vals:
+    X_train_plus[col + '_was missing'] =X_train_plus[col].isnull()
+    X_valid_plus[col + '_was missing'] =X_valid_plus[col].isnull()
+
+X_train_plus.head()
+my_imputer =SimpleImputer()
+
+imputed_X_train_plus = pd.DataFrame(my_imputer.fit_transform(X_train_plus))
+imputed_X_valid_plus = pd.DataFrame(my_imputer.fit_transform(X_valid_plus))
+
+
+
+
+#rename the columns
+imputed_X_train_plus.columns = X_train_plus.columns
+imputed_X_train_plus.columns = X_train_plus.columns
+
+MAE_imputation_plus=score_dataset(imputed_X_train_plus,imputed_X_valid_plus,y_train,y_valid)
+print('MAE approach 3(extension of imputation is :{}'.format(MAE_imputation_plus))
+
+
+
+
+
 
 
