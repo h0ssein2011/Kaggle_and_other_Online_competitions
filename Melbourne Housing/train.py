@@ -75,16 +75,13 @@ for col in cols_with_missing_vals:
     X_train_plus[col + '_was missing'] =X_train_plus[col].isnull()
     X_valid_plus[col + '_was missing'] =X_valid_plus[col].isnull()
 
-X_train_plus.head()
-my_imputer =SimpleImputer()
+my_imputer = SimpleImputer()
 
 imputed_X_train_plus = pd.DataFrame(my_imputer.fit_transform(X_train_plus))
-imputed_X_valid_plus = pd.DataFrame(my_imputer.fit_transform(X_valid_plus))
+# imputed_X_valid_plus = pd.DataFrame(my_imputer.fit_transform(X_valid_plus))
 
 
-
-
-#rename the columns
+rename the columns
 imputed_X_train_plus.columns = X_train_plus.columns
 imputed_X_train_plus.columns = X_train_plus.columns
 
