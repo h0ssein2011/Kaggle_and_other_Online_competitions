@@ -48,9 +48,22 @@ reduced_MAE=score_dataset(reduced_X_train,reduced_X_valid,y_train,y_valid )
 print('MAE for reduced approach is:{}'.format(reduced_MAE))
 
 
+#approach 2 : imputation
 
+from sklearn.impute import SimpleImputer
 
+my_imputer = SimpleImputer()
 
+imputed_X_train = pd.DataFrame(my_imputer.fit_transform(X_train))
+imputed_X_valid = pd.DataFrame(my_imputer.fit_transform(X_valid))
+
+#rename the columns
+imputed_X_train.columns = X_train.columns
+imputed_X_valid.columns = X_valid.columns
+
+imputed_MAE = score_dataset(imputed_X_train,imputed_X_valid,y_train,y_valid)
+
+print('MAE imputed approach is : {}'.format(imputed_MAE))
 
 
 
