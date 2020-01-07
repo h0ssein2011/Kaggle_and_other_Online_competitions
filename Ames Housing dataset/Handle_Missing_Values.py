@@ -66,7 +66,7 @@ imputed_MAE = score_dataset(imputed_X_train,imputed_X_valid,y_train,y_valid)
 print('MAE imputed approach is : {}'.format(imputed_MAE))
 
 #select approach:
-# it seems first approach is better so chosse it for final prediction
+# it seems first approach is better so chose it for final prediction
 
 
 X_final_train = reduced_X_train
@@ -79,11 +79,11 @@ pred_valid = model.predict(X_final_valid)
 
 MAE_valid =score_dataset(X_final_train,X_final_valid,y_train,y_valid)
 print('model prediction on valid set: {}'.format(MAE_valid))
-
-
-#predict on test dataset
-
-pred_test=model.predict(X_test)
+#
+#
+# #predict on test dataset
+#
+# pred_test=model.predict(X_test)
 
 
 
