@@ -33,7 +33,7 @@ X_valid = X_valid[my_cols]
 # list of categorical vars
 s =(X_train.dtypes == 'object')
 object_cols=list(s[s].index)
-
+print(object_cols)
 
 #import Model and Metrics
 from sklearn.ensemble import RandomForestRegressor
@@ -61,10 +61,41 @@ from sklearn.preprocessing import LabelEncoder
 Encoder =LabelEncoder()
 
 for col in object_cols:
-    label_X_train[col]=Encoder.fit_transform(label_X_train[col])
-    label_X_valid[col]=Encoder.fit_transform(label_X_valid[col])
+    label_X_train[col]=Encoder.fit_transform(X_train[col])
+    label_X_valid[col]=Encoder.transform(X_valid[col])
 
 label_approach_MAE= score_dataset(label_X_train,label_X_valid,y_train,y_valid)
 print('MAE lable endcoding approach: {}'.format(label_approach_MAE))
+
+
+
+#approach 3: onehotendocding
+
+from sklearn.preprocessing import OneHotEncoder
+
+OneHotEncoder = OneHotEncoder(handle_unknown='ignore' ,sparse=False)
+
+OH_Train_cols = pd.DataFrame(OneHotEncoder.fit_transform(X_train[object_cols]))
+OH_valid_cols = pd.DataFrame(OneHotEncoder.fit_transform(X_valid[object_cols]))
+
+#put back index after neglect by onhotencoder
+OH_Train_cols.index = X_train.index
+OH_Valid_cols.index = X_valid.index
+
+#return num cols
+num_cols_train = X_train.drop(object_cols , axis = 1)
+num_cols_valid = X_valid.drop(object_cols , axis = 1)
+
+#merge num cols and Onehotencoded Df
+OH_Train_cols = pd.concat([num_cols_train , OH_Train_cols] , axis=1)
+OH_valid_cols = pd.concat([num_cols_valid , OH_valid_cols] , axis=1)
+
+
+on_hot_endoding_MAE = score_dataset(OH_Train_cols,OH_valid_cols ,y_train,y_valid)
+
+print('MAE approach OnehotEncoding is:{}' .format(on_hot_endoding_MAE))
+
+
+
 
 
