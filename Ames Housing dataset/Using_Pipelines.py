@@ -43,7 +43,7 @@ Simple_imputer = SimpleImputer(strategy='constant')
 #preprocessing for categorical variables
 
 Categorical_transformer = Pipeline(steps=[('imputer',SimpleImputer(strategy='most_frequent')),
-                                          ('onehot',OneHotEncoder(handle_unknown='ingnore'))])
+                                          ('onehot',OneHotEncoder(handle_unknown='ignore'))])
 
 
 #Bundle preprocessing for numerical and categorical variables
@@ -53,4 +53,28 @@ preprocesser = ColumnTransformer(
         ('cat',Categorical_transformer ,low_card_cols)
     ]
 )
+
+
+#define the model
+from sklearn.ensemble import RandomForestRegressor
+
+RF_model = RandomForestRegressor(n_estimators=100 , random_state=0)
+
+#evaluate the model in the pipline
+my_pipeline = Pipeline(steps=[('preprocessor',preprocesser) ,('model',RF_model)])
+
+my_pipeline.fit(X_train,y_train)
+pred=my_pipeline.predict(X_valid)
+
+# calculate MAE
+from sklearn.metrics import mean_absolute_error
+score = mean_absolute_error(y_valid,pred)
+
+print('MAE :',score)
+
+
+
+
+
+
 
