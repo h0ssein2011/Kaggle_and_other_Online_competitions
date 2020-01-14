@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$USER_HOME$/codes/Data_analysis/.idea/Data_analysis.iml" filepath="$USER_HOME$/codes/Data_analysis/.idea/Data_analysis.iml" />
+      <module fileurl="file://$USER_HOME$/codes/codes_snapp/.idea/codes_snapp.iml" filepath="$USER_HOME$/codes/codes_snapp/.idea/codes_snapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/kaggle-and-other-Online-competitions.iml" filepath="$PROJECT_DIR$/.idea/kaggle-and-other-Online-competitions.iml" />
+    </modules>
+  </component>
+</project>
