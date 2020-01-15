@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 # 
 
 train =pd.read_csv('Input/train.csv')
-test=pd.read_csv('Input/test.csv')
+test=pd.read_csv('Input/test.csv',index_col='Id')
 # print(train.columns)
 X = train.drop('SalePrice',axis = 1)
 
@@ -64,5 +64,12 @@ pereds = clf.predict(X_valid)
 #evaluate the model
 from sklearn.metrics import mean_absolute_error
 
-print('MAE Pipllined model is',mean_absolute_error(y_valid,pereds))
+print('MAE Pipelined model is',mean_absolute_error(y_valid,pereds))
 
+perd_test = clf.predict(test)
+df_output =pd.DataFrame(perd_test,columns=['SalePrice'])
+df_output['Id']=test.index
+df_output =df_output[['Id','SalePrice']]
+df_output.to_csv('Input/PipelineSubmision.csv',index=False)
+
+print('submission file is in Input directory')
