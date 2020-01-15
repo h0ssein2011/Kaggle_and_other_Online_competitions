@@ -56,6 +56,7 @@ model = RandomForestRegressor(n_estimators=100 , random_state=0)
 
 #bundel prepocessing and model in one line 
 clf =Pipeline(steps=[('preprocess',preprcessing_part),('model',model)])
+clf.fit(X_train,y_train)
 
 #predict by pipelined model
 pereds = clf.predict(X_valid)
@@ -63,4 +64,5 @@ pereds = clf.predict(X_valid)
 #evaluate the model
 from sklearn.metrics import mean_absolute_error
 
-print('MAE Pipllined model is: {}',format(mean_absolute_error(y_valid,pereds)))
+print('MAE Pipllined model is',mean_absolute_error(y_valid,pereds))
+
