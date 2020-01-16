@@ -94,8 +94,3 @@ OH_valid_cols = pd.concat([num_cols_valid , OH_valid_cols] , axis=1)
 on_hot_endoding_MAE = score_dataset(OH_Train_cols,OH_valid_cols ,y_train,y_valid)
 
 print('MAE approach OnehotEncoding is:{}' .format(on_hot_endoding_MAE))
-
-
-
-
-

@@ -57,13 +57,13 @@ sns.boxplot(x='weekend', y='Count', data=train, showfliers=False)
 
 train.index = train['Datetime']
 train.drop('ID', inplace=True, axis=1)
-plt.figure(figsize=(16, 8))
-plt.plot(train['Count'], label='Passenger count')
-plt.title('Time series Date')
-plt.xlabel('Time')
-plt.ylabel('Count passengers')
-plt.legend(loc='best')
-plt.show()
+figure(figsize=(16, 8))
+plot(train['Count'], label='Passenger count')
+title('Time series Date')
+xlabel('Time')
+ylabel('Count passengers')
+legend(loc='best')
+show()
 
 # ### List of Hypotesis:
 # ### *Traffic will increase as the years pass by
@@ -102,7 +102,7 @@ Weekly = train.resample('W').mean()
 Montly = train.resample('M').mean()
 
 # lets visulaize them
-fig, axs = plt.subplots(4, 1)
+fig, axs = subplots(4, 1)
 hourly.Count.plot(figsize=(16, 8), title='Hourly', ax=axs[0])
 Daily.Count.plot(figsize=(16, 8), title='Daily', ax=axs[1])
 Weekly.Count.plot(figsize=(16, 8), title='Weekly', ax=axs[2])
@@ -124,10 +124,10 @@ Valid = train.ix['2014-06-25':'2014-09-25']
 
 Train.Count.plot(figsize=(15, 8), title='Daily Ridership', fontsize=14, label='train')
 Valid.Count.plot(figsize=(15, 8), title='Daily Ridership', fontsize=14, label='Valid')
-plt.xlabel('Time')
-plt.ylabel('Count')
-plt.legend(loc='best')
-plt.show()
+xlabel('Time')
+ylabel('Count')
+legend(loc='best')
+show()
 
 # ## lets dive into the forecasting models
 # #### i) Naive Approach
@@ -143,13 +143,13 @@ y_hat = Valid.copy()
 y_hat['naive'] = dd[len(dd) - 1]
 
 # lets visualize the data
-plt.figure(figsize=(12, 8))
-plt.plot(Train.index, Train.Count, label='Train')
-plt.plot(Valid.index, Valid.Count, label='Valid')
-plt.plot(y_hat.index, y_hat.naive, label='naive')
-plt.legend(loc='best')
-plt.title("Naive Forecast")
-plt.show()
+figure(figsize=(12, 8))
+plot(Train.index, Train.Count, label='Train')
+plot(Valid.index, Valid.Count, label='Valid')
+plot(y_hat.index, y_hat.naive, label='naive')
+legend(loc='best')
+title("Naive Forecast")
+show()
 
 Train.tail()
 
@@ -167,35 +167,35 @@ print(rsme)
 y_hat_avg = Valid.copy()
 y_hat_avg['avg_forecast'] = y_hat['Count'].rolling(10).mean().iloc[-1]
 rmse = sqrt(mean_squared_error(y_hat.Count, y_hat_avg.avg_forecast))
-plt.figure(figsize=(15, 8))
-plt.plot(Train.index, Train.Count, label='Train')
-plt.plot(Valid.index, Valid.Count, label='Valid')
-plt.plot(y_hat_avg.avg_forecast, label='forecast')
-plt.legend(loc='Best')
-plt.title('moving avg with 10 rolling with rmse:{}'.format(round(rmse, 2)))
-plt.show()
+figure(figsize=(15, 8))
+plot(Train.index, Train.Count, label='Train')
+plot(Valid.index, Valid.Count, label='Valid')
+plot(y_hat_avg.avg_forecast, label='forecast')
+legend(loc='Best')
+title('moving avg with 10 rolling with rmse:{}'.format(round(rmse, 2)))
+show()
 
 y_hat_avg = Valid.copy()
 y_hat_avg['avg_forecast'] = y_hat['Count'].rolling(20).mean().iloc[-1]
 rmse = sqrt(mean_squared_error(y_hat.Count, y_hat_avg.avg_forecast))
-plt.figure(figsize=(15, 8))
-plt.plot(Train.index, Train.Count, label='Train')
-plt.plot(Valid.index, Valid.Count, label='Valid')
-plt.plot(y_hat_avg.avg_forecast, label='forecast')
-plt.legend(loc='Best')
-plt.title('moving avg with 20 rolling with rmse:{}'.format(round(rmse, 2)))
-plt.show()
+figure(figsize=(15, 8))
+plot(Train.index, Train.Count, label='Train')
+plot(Valid.index, Valid.Count, label='Valid')
+plot(y_hat_avg.avg_forecast, label='forecast')
+legend(loc='Best')
+title('moving avg with 20 rolling with rmse:{}'.format(round(rmse, 2)))
+show()
 
 y_hat_avg = Valid.copy()
 y_hat_avg['avg_forecast'] = y_hat['Count'].rolling(50).mean().iloc[-1]
 rmse = sqrt(mean_squared_error(y_hat.Count, y_hat_avg.avg_forecast))
-plt.figure(figsize=(15, 8))
-plt.plot(Train.index, Train.Count, label='Train')
-plt.plot(Valid.index, Valid.Count, label='Valid')
-plt.plot(y_hat_avg.avg_forecast, label='forecast')
-plt.legend(loc='Best')
-plt.title('moving avg with 50 rolling with rmse:{}'.format(round(rmse, 2)))
-plt.show()
+figure(figsize=(15, 8))
+plot(Train.index, Train.Count, label='Train')
+plot(Valid.index, Valid.Count, label='Valid')
+plot(y_hat_avg.avg_forecast, label='forecast')
+legend(loc='Best')
+title('moving avg with 50 rolling with rmse:{}'.format(round(rmse, 2)))
+show()
 
 # iii) Simple Exponential Smoothing¶
 # 
@@ -208,13 +208,13 @@ fit2 = SimpleExpSmoothing(np.array(Train['Count'])).fit(smoothing_level=0.6, opt
 y_hat_avg['SES'] = fit2.forecast(len(Valid))
 rmse = np.round(sqrt(mean_squared_error(Valid['Count'], y_hat_avg['SES'])), 1)
 
-plt.figure(figsize=(16, 8))
-plt.plot(Train['Count'], label='Train')
-plt.plot(Valid['Count'], label='Valid')
-plt.plot(y_hat_avg['SES'], label='SES')
-plt.title('SimpleExpSmoothing with RSM:{}'.format(rmse))
-plt.legend(loc='Best')
-plt.show()
+figure(figsize=(16, 8))
+plot(Train['Count'], label='Train')
+plot(Valid['Count'], label='Valid')
+plot(y_hat_avg['SES'], label='SES')
+title('SimpleExpSmoothing with RSM:{}'.format(rmse))
+legend(loc='Best')
+show()
 
 # iv) Holt’s Linear Trend Model
 
@@ -223,7 +223,7 @@ import statsmodels.api as sm
 
 sm.tsa.seasonal_decompose(Train.Count).plot()
 result = sm.tsa.adfuller(train.Count)
-plt.show()
+show()
 
 y_hat_avg = Valid.copy()
 fit1 = Holt(np.array(Train.Count)).fit(smoothing_level=0.3)
@@ -231,13 +231,13 @@ y_hat_avg['Holter_linear'] = fit1.forecast(len(Valid))
 
 rmse = np.round(sqrt(mean_squared_error(Valid['Count'], y_hat_avg['Holter_linear'])), 1)
 
-plt.figure(figsize=(16, 8))
-plt.plot(Train['Count'], label='Train')
-plt.plot(Valid['Count'], label='Valid')
-plt.plot(y_hat_avg['Holter_linear'], label='Holter_linear')
-plt.title('Holter_linear with RSM:{}'.format(rmse))
-plt.legend(loc='Best')
-plt.show()
+figure(figsize=(16, 8))
+plot(Train['Count'], label='Train')
+plot(Valid['Count'], label='Valid')
+plot(y_hat_avg['Holter_linear'], label='Holter_linear')
+title('Holter_linear with RSM:{}'.format(rmse))
+legend(loc='Best')
+show()
 
 y_hat_avg.tail()
 
@@ -291,13 +291,13 @@ fit1 = ExponentialSmoothing(np.array(Train['Count']), seasonal_periods=7, trend=
 y_hat_avg['Holter_Winter'] = fit1.forecast(len(Valid))
 rmse = np.round(sqrt(mean_squared_error(Valid['Count'], y_hat_avg['Holter_Winter'])), 1)
 
-plt.figure(figsize=(16, 8))
-plt.plot(Train['Count'], label='Train')
-plt.plot(Valid['Count'], label='Valid')
-plt.plot(y_hat_avg['Holter_Winter'], label='Holter_Winter')
-plt.title('Holt_Winter with rmse:'.format(rmse))
-plt.legend(loc='Best')
-plt.show()
+figure(figsize=(16, 8))
+plot(Train['Count'], label='Train')
+plot(Valid['Count'], label='Valid')
+plot(y_hat_avg['Holter_Winter'], label='Holter_Winter')
+title('Holt_Winter with rmse:'.format(rmse))
+legend(loc='Best')
+show()
 
 #  Expand to the test dataset
 
@@ -336,13 +336,13 @@ def test_stationary(timeseries):
     rolstd=pd.rolling_std(timeseries , window = 24)
 
     #plot the
-    orig= plt.plot(timeseries,color='Blue' ,label='Original')
-    mean=plt.plot(rolmean , color = 'red' , label = 'rolling mean')
-    std=plt.plot(rolstd , color = 'balck' , label='rolling std' )
-    plt.legend('best')
-    plt.title('Rolling Mean & std ')
+    orig= plot(timeseries,color='Blue' ,label='Original')
+    mean=plot(rolmean , color = 'red' , label = 'rolling mean')
+    std=plot(rolstd , color = 'balck' , label='rolling std' )
+    legend('best')
+    title('Rolling Mean & std ')
 
-    plt.show(block=False)
+    show(block=False)
 
     # eprform adfuller test
     print('Results of Dickey-Fuller Test:')

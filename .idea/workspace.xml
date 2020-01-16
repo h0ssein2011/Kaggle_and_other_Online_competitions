@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d3e346cc-4629-4f93-9ffb-abbf70cf8fbb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/kaggle-and-other-Online-competitions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kaggle-and-other-Online-competitions.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ames Housing dataset/Handeling_categorical_variables.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ames Housing dataset/Handeling_categorical_variables.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../learnign-code" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1VnQbYJ0JZGIM32jqnvfmqk5GIc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../learnign-code" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.project" />
+  </component>
+  <component name="RunManager">
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.The central limit theorem" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d3e346cc-4629-4f93-9ffb-abbf70cf8fbb" name="Default Changelist" comment="" />
+      <created>1578646184013</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578646184013</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="161" y="27" width="1084" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578647474609">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="161" y="27" width="1084" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1299.741@67.27.1299.741" timestamp="1578647474609" />
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1578647980963">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1578647980963" />
+    <state width="1276" height="175" key="GridCell.Tab.0.bottom" timestamp="1578647164515">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1276" height="175" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1578647164515" />
+    <state width="1276" height="175" key="GridCell.Tab.0.center" timestamp="1578647164514">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1276" height="175" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1578647164514" />
+    <state width="1276" height="175" key="GridCell.Tab.0.left" timestamp="1578647164513">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1276" height="175" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1578647164513" />
+    <state width="1276" height="175" key="GridCell.Tab.0.right" timestamp="1578647164514">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state width="1276" height="175" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1578647164514" />
+    <state x="202" y="38" width="1062" height="730" key="SettingsEditor" timestamp="1578647888673">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="202" y="38" width="1062" height="730" key="SettingsEditor/67.27.1299.741@67.27.1299.741" timestamp="1578647888673" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1578647190496">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1578647190496" />
+    <state x="379" y="89" key="search.everywhere.popup" timestamp="1578646592010">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="379" y="89" key="search.everywhere.popup/67.27.1299.741@67.27.1299.741" timestamp="1578646592010" />
+  </component>
+</project>
