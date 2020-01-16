@@ -1,0 +1,11 @@
+
+
+###############################steps for ML projects #############################
+#0- load db
+#1- select X & y
+#2- find null values
+#3- find type vars (int/cats)
+#4- preprocessing for each type
+#5- build model
+# 6- ealuation 
+#7 submuission (if so)
