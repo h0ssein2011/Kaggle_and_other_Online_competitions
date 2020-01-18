@@ -39,4 +39,31 @@ from sklearn.model_selection import cross_val_score
 scores = -1 * cross_val_score(my_pipeline ,X_train,y,cv=5 ,scoring='neg_mean_absolute_error')
 print('MAE is:',scores.mean())
 
-#7 submuission (if so)
+#7 using CV to find the best n_estimators
+
+#create a function to get MAE scores for the given n_estimators
+
+def get_score(n_estimators):
+
+    my_pipeline = Pipeline(steps=[('preprocesor',SimpleImputer())
+                                    ,('model',RandomForestRegressor(n_estimators=n_estimators,
+                                                                                            random_state=0))])
+
+    scores = -1 * cross_val_score(my_pipeline, X_train,y, cv=3,scoring='neg_mean_absolute_error')
+
+    return(scores.mean())
+
+
+# store result scores in a dictionary for 50 to 400 by steps 50
+results = {}
+for i in range(1,9):
+    results[i * 50]= get_score(i*50)
+
+
+#shows the results in a graph
+import matplotlib.pyplot as plt 
+
+plt.plot(list(results.keys()), list(results.values()))
+plt.show()
+
+#it seems that the best n for RandomForest is 200
