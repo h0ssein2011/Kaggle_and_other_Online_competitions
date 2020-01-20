@@ -27,7 +27,7 @@ train_data['has_tag_line']=np.where(train_data.tagline.isnull(),0,1)
 #3- find type vars (int/cats)
 #select numerical colls only for simplicity
 # num_cols = [col for col in train_data.columns if train_data[col].dtype in ['int64','float64']]
-num_cols = ['budget', 'popularity', 'runtime', 'has_home_page', 'Spoken_language_name','has_tag_line']
+num_cols = ['budget', 'popularity', 'runtime', 'has_home_page','has_tag_line']
 X=train_data[num_cols]
 
 y=train_data.revenue
@@ -53,3 +53,15 @@ from sklearn.metrics import mean_absolute_error
 MAE = mean_absolute_error(y_valid,preds)
 print('MAE is:',MAE)
 #7 submuission (if so)
+
+
+test_data['has_home_page']=np.where(test_data.homepage.isnull(),0,1)
+test_data['has_tag_line']=np.where(test_data.tagline.isnull(),0,1)
+
+X_test=test_data[num_cols]
+
+test_preds = my_pipeline.predict(X_test)
+
+submission = pd.DataFrame({'id':X_test.index,'revenue':test_preds})
+
+submission.to_csv('Input/First_submission.csv',index=False)
