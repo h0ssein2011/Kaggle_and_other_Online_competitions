@@ -1,20 +1,39 @@
 
 
+
 #0- load db
 import pandas as pd 
 import numpy as np 
 
 train_data = pd.read_csv('Input/train.csv',index_col='id')
 test_data = pd.read_csv('Input/test.csv',index_col='id')
+#get a quick review sample data
+sample_train=train_data.head(5)
+
 
 # 0.1 data analysis 
-train_data['collection_name']=np.nan
+#collection 
+train_data['collection_name']=train_data['belongs_to_collection'].apply(lambda x: x[0]['name'] if x != {} else 0)
+test_data['collection_name']=test_data['belongs_to_collection'].apply(lambda x: x[0]['name'] if x != {} else 0)
+train_data.drop('belongs_to_collection',axis = 1 ,inplace=True)
+test_data.drop('belongs_to_collection',axis = 1 ,inplace=True)
+
+
+
+
+
+#genre
 train_data['genre_name']=np.nan
+
+
+
+
+
 train_data['Production_company_name']=np.nan
 train_data['has_home_page']=np.where(train_data.homepage.isnull(),0,1)
 train_data['Spoken_language_name']=np.nan
 train_data['has_tag_line']=np.where(train_data.tagline.isnull(),0,1)
-# 
+
 
 #1- select X & y
 
