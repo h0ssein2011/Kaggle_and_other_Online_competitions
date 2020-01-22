@@ -1,20 +1,39 @@
+##https://www.kaggle.com/artgor/eda-feature-engineering-and-model-interpretation
 
+# import pandas as pd
+# data = [[{'id':2, 'name':'amin'}, 10], [{'id':3, 'name':'ali'}, 15], ['', 14]]
+# df = pd.DataFrame(data, columns = ['Name', 'Age'])
+# df1 = df.assign(t_name=pd.Series([n['name'] if n != '' else '' for n in df['Name']]).values)
 
 
 #0- load db
 import pandas as pd 
 import numpy as np 
+import ast
 
 train_data = pd.read_csv('Input/train.csv',index_col='id')
 test_data = pd.read_csv('Input/test.csv',index_col='id')
 #get a quick review sample data
 sample_train=train_data.head(5)
 
+def text_to_dict(df):
+    for column in df.columns:
+        df[column] = df[column].apply(lambda x: {} if pd.isna(x) else ast.literal_eval(x) )
+    return df
 
+train_data = text_to_dict(train_data)
+test_data = text_to_dict(test_data)
+
+
+
+
+# sample_train['test']=sample_train['belongs_to_collection'].apply(lambda x:pd.Series(x)[0])
 # 0.1 data analysis 
+
 #collection 
-train_data['collection_name']=train_data['belongs_to_collection'].apply(lambda x: x[0]['name'] if x != {} else 0)
-test_data['collection_name']=test_data['belongs_to_collection'].apply(lambda x: x[0]['name'] if x != {} else 0)
+train_data['collection_name']=train_data['belongs_to_collection'].apply(lambda x: x[0] if x != {} else 0)
+test_data['collection_name']=test_data['belongs_to_collection'].apply(lambda x: x[0] if x != {} else 0)
+
 train_data.drop('belongs_to_collection',axis = 1 ,inplace=True)
 test_data.drop('belongs_to_collection',axis = 1 ,inplace=True)
 
@@ -84,3 +103,5 @@ test_preds = my_pipeline.predict(X_test)
 submission = pd.DataFrame({'id':X_test.index,'revenue':test_preds})
 
 submission.to_csv('Input/First_submission.csv',index=False)
+
+
