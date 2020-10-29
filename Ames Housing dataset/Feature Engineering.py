@@ -53,7 +53,26 @@ for bucket in (train,valid,test):
 
 
 
-#train the model
+#train the model by lightgbm
 import lightgbm as lgb
 
+feature_cols = train.columns.drop('outcome')
 
+dtrain = lgb.Dataset(train[feature_cols],label=train['outcome'])
+dvalid = lgb.Dataset(valid[feature_cols],label=valid['outcome'])
+
+param = {'num_leaves': 64, 'objective': 'binary'}
+param['metric'] ='auc'
+num_round = 1000
+
+
+bst = lgb.train(param, dtrain, num_round, valid_sets=[dvalid], 
+                early_stopping_rounds=10, verbose_eval=False)
+
+# evaluation 
+
+from sklearn import metrics
+ypred = bst.predict(test[feature_cols])
+score = metrics.roc_auc_score(test['outcome'], ypred)
+
+print(f"Test AUC score: {score}")
